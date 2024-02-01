@@ -85,7 +85,7 @@ let signInFunction = async (req, res) => {
 let profileDetailsFunction = async (req, res) => {
 
     try {
-        let record = await UserModel.find({ status: 'active', _id: mongoose.Types.ObjectId(req.body.user_id) });
+        let record = await UserModel.find({ status: 'active', username:  req.body.username });
 
         let apiResponse = response.generate(0, ` Success`, record);
         res.status(200);
@@ -120,7 +120,7 @@ let updateFunction = async (req, res) => {
         for (const property in reqbody) {
             updateUserData[property] = reqbody[property];
         }
-       let userDeatils= await UserModel.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body.user_id) }, updateUserData, { new: true });
+       let userDeatils= await UserModel.findOneAndUpdate({ username: req.body.username }, updateUserData, { new: true });
         let apiResponse = response.generate(0, ` Success`, userDeatils);
         res.status(200);
         res.send(apiResponse);

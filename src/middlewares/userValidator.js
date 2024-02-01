@@ -76,7 +76,7 @@ let detailsValidate = async(req, res, next) => {
 }
 
 const detailsValidateSchema = Joi.object({
-    user_id: Joi.string().required()
+    username: Joi.string().required()
 });
 
 
@@ -99,7 +99,7 @@ let updateValidate = async(req, res, next) => {
 }
 
 const updateValidateSchema = Joi.object({
-    user_id: Joi.string().required(),
+    username: Joi.string().required(),
     user_age: Joi.string().required(),
     user_gender: Joi.string().required(),
     remarks: Joi.string().allow(null),
