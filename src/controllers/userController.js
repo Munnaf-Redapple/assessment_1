@@ -36,7 +36,7 @@ let signUpFunction = async (req, res) => {
 
 
     } catch (err) {
-        let apiResponse = response.generate(0, ` ERROR : ${err.message}`, {});
+        let apiResponse = response.generate(1, ` ERROR : ${err.message}`, {});
         res.status(410);
         res.send(apiResponse);
     }
@@ -66,17 +66,17 @@ let signInFunction = async (req, res) => {
             res.status(200);
             res.send(apiResponse);
         } else {
-            let apiResponse = response.generate(0, ` ERROR : Wrong Password`, {});
+            let apiResponse = response.generate(1, ` ERROR : Wrong Password`, {});
             res.status(410);
             res.send(apiResponse)
         }
         } else {
-            let apiResponse = response.generate(0, ` ERROR : User Not Register`, {});
+            let apiResponse = response.generate(1, ` ERROR : User Not Register`, {});
             res.status(410);
             res.send(apiResponse)
         }
     } catch (err) {
-        let apiResponse = response.generate(0, ` ERROR : ${err.message}`, {});
+        let apiResponse = response.generate(1, ` ERROR : ${err.message}`, {});
         res.status(410);
         res.send(apiResponse)
     }
@@ -91,7 +91,7 @@ let profileDetailsFunction = async (req, res) => {
         res.status(200);
         res.send(apiResponse);
     } catch (err) {
-        let apiResponse = response.generate(0, ` ERROR : ${err.message}`, {});
+        let apiResponse = response.generate(1, ` ERROR : ${err.message}`, {});
         res.status(410);
         res.send(apiResponse);
     }
@@ -105,7 +105,7 @@ let listFunction = async (req, res) => {
         res.status(200);
         res.send(apiResponse);
     } catch (err) {
-        let apiResponse = response.generate(0, ` ERROR : ${err.message}`, {});
+        let apiResponse = response.generate(1, ` ERROR : ${err.message}`, {});
         res.status(410);
         res.send(apiResponse);
     }
