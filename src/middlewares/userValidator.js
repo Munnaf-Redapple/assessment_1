@@ -57,6 +57,28 @@ const signinValidateSchema = Joi.object({
     password: Joi.string().required(),
 });
 
+let detailsValidate = async(req, res, next) => {
+
+    try {
+        const value = detailsValidateSchema.validate(req.body);
+        if (value.hasOwnProperty('error')) {
+            throw new Error(value.error);
+        } else {
+            next();
+        }
+
+    } catch (err) {
+        console.log(err);
+        let apiResponse = response.generate(1, ` ERROR : ${err.message}`, {});
+        res.status(403);
+        res.send(apiResponse)
+    }
+}
+
+const detailsValidateSchema = Joi.object({
+    user_id: Joi.string().required()
+});
+
 
 let updateValidate = async(req, res, next) => {
 
@@ -77,6 +99,7 @@ let updateValidate = async(req, res, next) => {
 }
 
 const updateValidateSchema = Joi.object({
+    user_id: Joi.string().required(),
     user_age: Joi.string().required(),
     user_gender: Joi.string().required(),
     remarks: Joi.string().allow(null),
@@ -88,5 +111,6 @@ const updateValidateSchema = Joi.object({
 module.exports = {
     signUpValidate: signUpValidate,
     signInValidate: signInValidate,
+    detailsValidate: detailsValidate,
     updateValidate: updateValidate,
 }
